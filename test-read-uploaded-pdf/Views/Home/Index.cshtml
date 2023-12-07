@@ -1,0 +1,180 @@
+﻿<h1>PDF Reader Libraries</h1>
+<br />
+<h4>iTextSharp</h4>
+<p><a href="https://itextpdf.com/products/itextsharp" target="_blank">iTextSharp</a> is end of life and only receives security related updates.</p>
+<p>It is recommended replace iTextSharp with iText Core.</p>
+
+<h4>iText Core</h4>
+<p><a href="https://itextpdf.com/products/itext-core" target="_blank">iText Core</a> (<a href="https://github.com/itext/itext7-dotnet" target="_blank">Github</a>), formerly known as iTextSharp, which it replaces.</p>
+<p>iText Core is available under open source (AGPL) as well as a commercial license. Buying a license is mandatory as soon as deploying iText on a network without disclosing the source code of web application.</p>
+
+<h4>PdfPig</h4>
+<p><a href="https://github.com/UglyToad/PdfPig" target="_blank">PdfPig</a> is free with Apache-2.0 license.</p>
+<p>Current latest stable version is v0.1.8 released on 6 Jun, 2023. While the version is below 1.0.0 minor versions will change the public API without warning (SemVer will not be followed until 1.0.0 is reached).</p>
+
+<h4>DocNET</h4>
+<p><a href="https://github.com/GowenGit/docnet" target="_blank">DocNET</a> is free with MIT license.</p>
+<p>Current latest stable version is v2.6.0 released on 5 Sep, 2023.</p>
+
+<h4>PdfSharp</h4>
+<p><a href="https://github.com/empira/PDFsharp" target="_blank">PdfSharp</a> is primarily used for creating and manipulating PDF files, not for reading or extracting text from existing PDF files.</p>
+<p>The following PdfSharp demo can't extract text from uploaded pdf file via PdfSharp correctly.</p>
+
+<p><b>As PdfPig has earned more stars with 1300 stars compared to DocNET's 382 stars in github, I prefer to PdfPig if choosing free PDF reader.</b></p>
+<hr />
+<h4>iTextSharp Demo</h4>
+<input id="fileInputITextSharp" type="file" accept=".pdf" />
+<button onclick="uploadFileItextSharp()">Upload</button>
+
+<br />
+<br />
+Text in the uploaded PDF file
+<br />
+<textarea id="pdfContentITextSharp" rows="4" cols="100"></textarea>
+
+<hr />
+<h4>iText Core Demo</h4>
+<input id="fileInputITextCore" type="file" accept=".pdf" />
+<button onclick="uploadFileItextCore()">Upload</button>
+
+<br />
+<br />
+Text in the uploaded PDF file
+<br />
+<textarea id="pdfContentITextCore" rows="4" cols="100"></textarea>
+
+<hr />
+<h4>PdfPig Demo</h4>
+<input id="fileInputPdfPig" type="file" accept=".pdf" />
+<button onclick="uploadFilePdfPig()">Upload</button>
+
+<br />
+<br />
+Text in the uploaded PDF file
+<br />
+<textarea id="pdfContentPdfPig" rows="4" cols="100"></textarea>
+
+<hr />
+<h4>DocNet Demo</h4>
+<input id="fileInputDocNet" type="file" accept=".pdf" />
+<button onclick="uploadFileDocNet()">Upload</button>
+
+<br />
+<br />
+Text in the uploaded PDF file
+<br />
+<textarea id="pdfContentDocNet" rows="4" cols="100"></textarea>
+
+<hr />
+<h4>PdfSharp Demo</h4>
+<input id="fileInputPdfSharp" type="file" accept=".pdf" />
+<button onclick="uploadFilePdfSharp()">Upload</button>
+
+<br />
+<br />
+Text in the uploaded PDF file
+<br />
+<textarea id="pdfContentPdfSharp" rows="4" cols="100"></textarea>
+
+<script>
+    function uploadFileItextSharp() {
+        var fileInput = document.getElementById('fileInputITextSharp');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload/itextsharp', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pdfContentITextSharp").value = data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    function uploadFileItextCore() {
+        var fileInput = document.getElementById('fileInputITextCore');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload/itextcore', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pdfContentITextCore").value = data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    function uploadFilePdfPig() {
+        var fileInput = document.getElementById('fileInputPdfPig');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload/pdfpig', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pdfContentPdfPig").value = data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    function uploadFileDocNet() {
+        var fileInput = document.getElementById('fileInputDocNet');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload/docnet', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pdfContentDocNet").value = data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    function uploadFilePdfSharp() {
+        var fileInput = document.getElementById('fileInputPdfSharp');
+        var file = fileInput.files[0];
+
+        var formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload/pdfsharp', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pdfContentPdfSharp").value = data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script>
+
