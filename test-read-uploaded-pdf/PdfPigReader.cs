@@ -1,5 +1,4 @@
-﻿using PdfSharp.Snippets.Drawing;
-using System.Text;
+﻿using System.Text;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 
 namespace test_read_uploaded_pdf

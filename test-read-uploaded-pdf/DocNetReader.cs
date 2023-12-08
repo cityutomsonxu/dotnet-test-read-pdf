@@ -2,7 +2,6 @@
 using Docnet.Core;
 using System.Text;
 using System.IO;
-using SixLabors.ImageSharp.Drawing;
 
 
 namespace test_read_uploaded_pdf

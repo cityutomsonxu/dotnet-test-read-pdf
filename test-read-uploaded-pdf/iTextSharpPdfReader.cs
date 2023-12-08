@@ -1,6 +1,5 @@
 ﻿using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-using Microsoft.AspNetCore.Http;
 using System.Text;
 
 namespace test_read_uploaded_pdf
